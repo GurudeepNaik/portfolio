@@ -3,6 +3,21 @@ import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
 import ArrowIcon from "../../Icons/ArrowIcon";
 import Kyra from "./Descriptions/Kyra";
 import CodeSympony from "./Descriptions/CodeSympony";
+
+interface CompaniesBarProps {
+  setDescriptionJob: (description: string) => void;
+}
+
+interface CompanyButtonProps {
+  ButtonOrderOfcompanyNameBackgroundColorGreen: number;
+  CompanyName: string;
+  BarPosition: number;
+  BarAvobePosition: number;
+  DescriptionJob: string;
+  CompanyNameBackgroundColorGreen: boolean[];
+  setDescriptionJob: (description: string) => void;
+}
+
 export default function WhereIHaveWorked() {
   const GetDescription = () => {
     switch (DescriptionJob) {
@@ -49,12 +64,13 @@ export default function WhereIHaveWorked() {
   );
 }
 
-const CompaniesBar = (props) => {
+const CompaniesBar = (props: CompaniesBarProps) => {
   const [barPosition, setBarPosition] = React.useState<Number>(-8); // Green bar position by the default it's -20px
   const [barAbovePosition, setBarAbovePosition] = React.useState<Number>(0);
   const [companyNameBackgroundColorGreen, setCompanyNameBackgroundColorGreen] =
     React.useState<boolean[]>([true, false, false, false, false, false, false]);
-  const CompanyButton = (props) => {
+
+  const CompanyButton = (props: CompanyButtonProps) => {
     return (
       <button
         onClick={() => {
